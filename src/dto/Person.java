@@ -1,4 +1,4 @@
-package lambdabasics;
+package dto;
 
 public class Person {
 
