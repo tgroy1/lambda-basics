@@ -3,3 +3,4 @@
 3. Closure example
 4. Reference to this in anonymous inner class v lambda
 5. Method Reference example
+6. Some basic stream expressions
