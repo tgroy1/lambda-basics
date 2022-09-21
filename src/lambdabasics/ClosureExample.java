@@ -16,14 +16,9 @@ public class ClosureExample {
 //			}
 //		});
 		
-		doProcess(a, i -> System.out.println(i + b));
-
+		Process myProc = i -> System.out.println(i + b);
+		myProc.process(a);
 	}
-	
-	private static void doProcess(int i, Process p) {
-		p.process(i);
-	}
-
 }
 
 interface Process {

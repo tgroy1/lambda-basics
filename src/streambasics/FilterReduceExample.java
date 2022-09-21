@@ -12,6 +12,7 @@ public class FilterReduceExample {
 		
 		System.out.println(values.stream()
 								 .filter(i -> i%5 == 0)
+								 .map(i -> i*2)
 								 .reduce(0, Integer::sum));
 
 	}

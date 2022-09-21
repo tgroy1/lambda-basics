@@ -33,6 +33,8 @@ public class StreamBaeldung {
 		//Stream creation
 		Stream<String> stream = streamOf(list);
 		
+		Stream<String> streamOf = Stream.of("a","b","c");
+		
 		String[] arr = new String[]{"a", "b", "c"};
 		Stream<String> streamOfArrayFull = Arrays.stream(arr);
 		Stream<String> streamOfArrayPart = Arrays.stream(arr, 1, 3);
@@ -52,6 +54,7 @@ public class StreamBaeldung {
 		DoubleStream doubleStream = random.doubles(3);
 		
 		IntStream streamOfChars = "abc".chars();
+		streamOfChars.forEach(System.out::println);
 		
 		Stream<String> streamOfString = Pattern.compile(", ").splitAsStream("a, b, c");
 		
@@ -63,14 +66,15 @@ public class StreamBaeldung {
 		
 		//Lazy Invocation
 		Optional<String> lazyStream = Arrays.asList("abc1", "abc2", "abc3").stream().filter(element -> {
-		    log.info("filter() was called");
+		    //log.info("filter() was called");
+			System.out.println("filter() was called");
 		    return element.contains("2");
 		}).map(element -> {
 		    log.info("map() was called");
 		    return element.toUpperCase();
 		}).findFirst();
 		
-		//System.out.println(lazyStream);
+		System.out.println(lazyStream);
 		
 		//Stream Reduction
 		int reducedTwoParams = IntStream.range(1, 4).reduce(10, (a, b) -> a + b);
@@ -86,12 +90,14 @@ public class StreamBaeldung {
 		List<String> collectorCollection = productList.stream().map(Product::getName).collect(Collectors.toList());
 		
 		String listToString = productList.stream().map(Product::getName)
-				  .collect(Collectors.joining(", ", "[", "]"));
+				  .collect(Collectors.joining(",", "[", "]"));
 		System.out.println(listToString);
 		
-		double averagePrice = productList.stream()
+		double averagePrice1 = productList.stream()
 				  .collect(Collectors.averagingInt(Product::getPrice));
-		System.out.println(averagePrice);
+		double averagePrice2 = productList.stream()
+				  .mapToInt(Product::getPrice).average().orElse(0.0);
+		System.out.println(averagePrice1);
 		
 		IntSummaryStatistics summingPrice = productList.stream()
 				  .collect(Collectors.summarizingInt(Product::getPrice));
@@ -109,10 +115,7 @@ public class StreamBaeldung {
 				  .collect(Collectors.collectingAndThen(Collectors.toSet(),
 				  Collections::unmodifiableSet));
 		
-		
-		
-		//collectorCollection.forEach(System.out::println);
-
+//		streamOfArrayPart.forEach(System.out::println);
 	}
 
 	public static Stream<String> streamOf(List<String> list) {

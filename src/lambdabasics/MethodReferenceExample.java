@@ -15,6 +15,7 @@ public class MethodReferenceExample {
 		// called
 //		Thread t = new Thread(() -> printMessage());
 		Thread t = new Thread(MethodReferenceExample::printMessage); //
+		
 		t.start();
 
 		List<Person> people = Arrays.asList(new Person("John", "Terry", 26), new Person("Frank", "Lampard", 8),

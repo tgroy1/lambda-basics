@@ -18,8 +18,8 @@ public class StreamRunner {
 		}
 		
 		long start = System.currentTimeMillis();
-//		people.forEach(System.out::println); //will maintain order
-//		people.stream().forEach(System.out::println); //may not maintain order
+		people.forEach(System.out::println); //will maintain order
+		people.stream().forEach(System.out::println); //may not maintain order
 		people.parallelStream().forEach(System.out::println); //may not maintain order
 		long end = System.currentTimeMillis();
 		System.out.println("Printing took " + (end - start) + " ms");
