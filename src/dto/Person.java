@@ -5,11 +5,13 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	private int age;
+	private boolean isAdult;
 
-	public Person(String firstName, String lastName, int age) {
+	public Person(String firstName, String lastName, int age, boolean isAdult) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
+		this.isAdult = isAdult;
 	}
 
 	public String getFirstName() {
